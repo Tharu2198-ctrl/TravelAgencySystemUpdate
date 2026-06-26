@@ -1,0 +1,18 @@
+﻿@model List<Destination>
+
+<h2>Destinations</h2>
+
+<div class="row">
+    @foreach (var d in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="@d.ImageUrl" class="card-img-top" />
+                <div class="card-body">
+                    <h5>@d.City, @d.Country</h5>
+                    <p>@d.Description</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

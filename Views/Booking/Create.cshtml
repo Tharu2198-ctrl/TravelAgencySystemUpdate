@@ -1,0 +1,212 @@
+﻿@model TravelAgencySystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Book Vacation Package";
+
+    var package = ViewBag.Package as TravelAgencySystem.Models.Package;
+    var customers = ViewBag.Customers as List<TravelAgencySystem.Models.Customer>;
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <!-- PAGE TITLE -->
+
+            <div class="text-center mb-4">
+
+                <h1 class="text-primary">
+                    Vacation Package Booking
+                </h1>
+
+                <p class="text-muted">
+                    Fill in the details below to confirm your booking.
+                </p>
+
+            </div>
+
+            <!-- PACKAGE DETAILS CARD -->
+
+            <div class="card shadow mb-4 border-0">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="mb-0">
+                        Selected Package
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <h5 class="text-dark">
+                                @*  @package.PackageName*@
+                                @package?.PackageName
+                            </h5>
+
+                            <p>
+                                <strong>Price:</strong>
+                                @*   $@package.Price*@
+                                @(package?.Price ?? 0)
+                            </p>
+
+                            <p>
+                                <strong>Duration:</strong>
+                                @*   @package.DurationDays Days*@
+                                @(package?.DurationDays ?? 0) Days
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-6 text-center">
+
+                            <img src="/images/travel.jpg"
+                                 class="img-fluid rounded shadow"
+                                 style="height:200px; object-fit:cover;" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BOOKING FORM -->
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-success text-white">
+
+                    <h4 class="mb-0">
+                        Customer Booking Form
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <!-- HIDDEN PACKAGE ID -->
+
+                        <input type="hidden"
+                               name="PackageId"
+                               value="@package?.PackageId" />
+                        @* @package.PackageId *@
+
+                        <!-- CUSTOMER -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Select Customer
+                            </label>
+
+                            <select name="UserId"
+                                    class="form-select">
+
+                                @if (customers != null)
+                                {
+                                    foreach (var c in customers)
+                                    {
+                                        <option value="@c.UserId">@c.FullName</option>
+                                    }
+                                }
+
+                             @*   @foreach (var c in customers)
+                                {
+                                    <option value="@c.CustomerId">
+                                        @c.FullName
+                                    </option>
+                                }*@
+
+                            </select>
+
+                        </div>
+
+                        <!-- NUMBER OF PEOPLE -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Number Of People
+                            </label>
+
+                            <input type="number"
+                                   name="NumberOfPeople"
+                                   class="form-control"
+                                   min="1"
+                                   placeholder="Enter number of travelers"
+                                   required />
+
+                        </div>
+
+                        <!-- BOOKING DATE -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Booking Date
+                            </label>
+
+                            <input type="date"
+                                   name="BookingDate"
+                                   class="form-control"
+                                   required />
+
+                        </div>
+
+                        <!-- SPECIAL NOTES -->
+
+                    <!--    <div class="mb-3">
+
+                            <label class="form-label">
+                                Special Notes
+                            </label>
+
+                            <textarea name="Notes"
+                                      class="form-control"
+                                      rows="4"
+                                      placeholder="Optional notes..."></textarea>
+
+                            </div>-->
+
+                        <!-- BUTTONS -->
+
+                        <div class="d-flex justify-content-between">
+
+                            <a href="/Package"
+                               class="btn btn-secondary">
+
+                                Back
+
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success">
+
+                                Confirm Booking
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,29 @@
+﻿@model List<TravelAgencySystem.Models.Booking>
+
+<h2>Admin Booking Management</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Customer</th>
+        <th>Package</th>
+        <th>Date</th>
+        <th>People</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Customer.FullName</td>
+            <td>@b.Package.PackageName</td>
+            <td>@b.BookingDate</td>
+            <td>@b.NumberOfPeople</td>
+            <td>
+                <a href="/Admin/Edit/@b.BookingId" class="btn btn-warning">Edit</a>
+                <a href="/Admin/Delete/@b.BookingId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

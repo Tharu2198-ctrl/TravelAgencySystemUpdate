@@ -1,0 +1,55 @@
+﻿@model TravelAgencySystem.Models.Package
+
+<!--<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h2>@Model.PackageName</h2>
+
+        <p><b>Country:</b> @Model.Country</p>
+
+        <p><b>Total Price:</b> $@Model.Price</p>
+
+        <p>
+            <b>Per Day Price:</b>
+            $@(Model.Price / Model.DurationDays)
+        </p>
+
+        <p><b>Duration:</b> @Model.DurationDays days</p>
+
+        <hr />-->
+
+       <!-- OPTIONAL: Destination (safe check) -->
+        <!-- <h5>Destination Info</h5>
+                <p>
+                    @(Model.Destination != null ? Model.Destination.DestinationId.ToString() : "No destination info")
+        </p>-->
+
+        <!-- BOOK BUTTON -->
+<!--<a href="/Booking/Create?packageId=@Model.PackageId"
+           class="btn btn-success mt-3 w-100">
+            Book Now
+        </a>-->
+<!--</div>
+
+</div>-->
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h2>@Model.PackageName</h2>
+
+        <p><b>Country:</b> @Model.Country</p>
+        <p><b>Price:</b> @Model.Price</p>
+        <p><b>Duration:</b> @Model.DurationDays days</p>
+
+        <!-- BOOKING BUTTON -->
+        <a href="/Booking/Create?packageId=@Model.PackageId"
+           class="btn btn-success mt-3">
+            Book Now
+        </a>
+
+    </div>
+
+</div>

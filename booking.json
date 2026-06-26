@@ -1,0 +1,9 @@
+{
+  "BookingId": 6,
+  "BookingDate": "2026-06-29T00:00:00",
+  "NumberOfPeople": 2,
+  "UserId": 3,
+  "PackageId": 1,
+  "Customer": null,
+  "Package": null
+}

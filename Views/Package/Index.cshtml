@@ -1,0 +1,81 @@
+﻿@model List<TravelAgencySystem.Models.Package>
+
+@{
+    ViewData["Title"] = "Packages";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center text-primary mb-4">
+        Travel Packages
+    </h2>
+
+    <!-- FILTER BUTTONS -->
+    <!--<div class="text-center mb-4">
+
+        <a href="/Package" class="btn btn-dark me-2">
+            All
+        </a>
+
+        <a href="/Package?country=Paris" class="btn btn-primary me-2">
+            Paris
+        </a>
+
+        <a href="/Package?country=Maldives" class="btn btn-success me-2">
+            Maldives
+        </a>
+
+        <a href="/Package?country=Dubai" class="btn btn-warning">
+            Dubai
+        </a>
+
+    </div>-->
+
+    <!-- PACKAGE LIST -->
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-body text-center">
+                        <div class="card p-3 mb-3">
+                            <h5>@item.PackageName</h5>
+                            <p>Country: @item.Country</p>
+                            <!-- @*  <p>@item.Country</p>  *@    -->
+                            <p>Price: @item.Price</p>
+                            <!-- @* <p>@item.Price</p>  *@ -->
+                        </div>
+
+                        <!-- PER DAY PRICE CALCULATION -->
+                        <p>
+                            <b>Per Day:</b>
+                            $@(item.Price / item.DurationDays)
+                        </p>
+
+                        <p><b>Days:</b> @item.DurationDays</p>
+
+                        <!-- VIEW DETAILS -->
+                        <a href="/Package/Details/@item.PackageId"
+                           class="btn btn-primary w-100 mb-2">
+                            View Details
+                        </a>
+
+                        <!-- BOOK NOW -->
+                        <a href="/Booking/Create?packageId=@item.PackageId"
+                           class="btn btn-success">
+                            Book Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

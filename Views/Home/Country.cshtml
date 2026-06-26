@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Country Details";
+
+    string country = ViewBag.Country as string;
+    string c = country?.ToLower();
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center text-primary mb-4">
+        @country Travel Guide
+    </h2>
+
+    @if (c == "paris")
+    {
+        <div class="card shadow p-4 mb-3">
+
+            <h3>🌍 Paris – France</h3>
+
+            <p>
+                Paris is known as the "City of Love" and famous for its art,
+                culture, and beautiful architecture.
+            </p>
+
+            <ul>
+                <li>Eiffel Tower</li>
+                <li>Louvre Museum</li>
+                <li>Notre-Dame Cathedral</li>
+                <li>Seine River Cruise</li>
+            </ul>
+
+            <a href="/Package?country=Paris" class="btn btn-primary m-2">
+                View Paris Packages
+            </a>
+
+        </div>
+    }
+
+    else if (c == "maldives")
+    {
+        <div class="card shadow p-4 mb-3">
+
+            <h3>🏝 Maldives</h3>
+
+            <p>
+                Maldives is a tropical paradise famous for crystal clear water,
+                beaches, and luxury resorts.
+            </p>
+
+            <ul>
+                <li>Water Villas</li>
+                <li>Snorkeling & Diving</li>
+                <li>Sunset Cruises</li>
+                <li>Coral Reefs</li>
+            </ul>
+
+            <a href="/Package?country=Maldives" class="btn btn-success m-2">
+                View Maldives Packages
+            </a>
+
+        </div>
+    }
+
+    else if (c == "dubai")
+    {
+        <div class="card shadow p-4 mb-3">
+
+            <h3>🏙 Dubai – UAE</h3>
+
+            <p>
+                Dubai is a modern luxury city known for shopping,
+                skyscrapers, and desert adventures.
+            </p>
+
+            <ul>
+                <li>Burj Khalifa</li>
+                <li>Dubai Mall</li>
+                <li>Desert Safari</li>
+                <li>Palm Jumeirah</li>
+            </ul>
+
+            <a href="/Package?country=Dubai" class="btn btn-warning m-2">
+                View Dubai Packages
+            </a>
+
+        </div>
+    }
+
+    else
+    {
+        <div class="alert alert-danger text-center">
+            Country not found
+        </div>
+    }
+
+</div>

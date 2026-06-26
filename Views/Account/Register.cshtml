@@ -1,0 +1,31 @@
+﻿@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<h2 class="text-center">Register</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+
+        <form method="post" class="card p-4 shadow">
+
+            <input name="FullName" class="form-control mb-2" placeholder="Full Name">
+
+            <input name="Email" class="form-control mb-2" placeholder="Email">
+
+            <input name="Phone" class="form-control mb-2" placeholder="Phone">
+
+            <input name="Password" type="password" class="form-control mb-3" placeholder="Password">
+           
+
+            <button class="btn btn-success w-100">
+                Register
+            </button>
+
+        </form>
+
+    </div>
+</div>
